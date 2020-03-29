@@ -1,16 +1,15 @@
 backend:
   name: git-gateway
-  repo: amotarao/amotarao.dev-contents
   branch: master
 
-media_folder: static/img
+media_folder: src/static/img
 public_folder: /img
 
 collections:
   - name: 'blog'
     label: 'Blog'
     format: 'json'
-    folder: 'blog'
+    folder: 'src/assets/content/blog'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     editor:
