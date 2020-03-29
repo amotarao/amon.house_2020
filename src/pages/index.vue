@@ -2,13 +2,15 @@
   <div class="container">
     <h1>Amon Sawamura</h1>
     <p>明らかに作り途中だと思う</p>
-    <ul>
+    <ul :class="$style.list">
       <li>
         <a href="https://twitter.com/amotarao" target="_blank" rel="noopener">Twitter</a>
       </li>
       <li>
         <a href="https://github.com/amotarao" target="_blank" rel="noopener">GitHub</a>
       </li>
+    </ul>
+    <ul :class="$style.list">
       <li>
         <a href="https://yukukuru.app" target="_blank" rel="noopener">ゆくくる</a>
       </li>
@@ -30,30 +32,22 @@ export default Vue.extend({});
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
-    Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+.container > * {
+  margin-bottom: 2rem;
 }
+</style>
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+<style module>
+.list {
+  text-align: left;
 }
-
-.links {
-  padding-top: 15px;
+.list li {
+  text-align: left;
 }
 </style>
