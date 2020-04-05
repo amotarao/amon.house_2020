@@ -1,21 +1,28 @@
+import Sass from 'sass';
+import Fiber from 'fibers';
+
 export default {
   mode: 'universal',
   srcDir: 'src',
-  /*
-   ** Headers of the page
-   */
   head: {
-    title: process.env.npm_package_name || '',
+    htmlAttrs: {
+      lang: 'ja-jp',
+    },
+    title: 'Amon Sawamura',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || '',
+        content: 'さわむらあもんのページ',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'apple-touch-icon', type: 'image/png', href: '/apple-touch-icon.png' },
+      { rel: 'icon', type: 'image/png', href: '/icon-192.png' },
+    ],
   },
   /*
    ** Customize the progress-bar color
@@ -46,6 +53,19 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+  pwa: {
+    meta: {
+      name: 'Amon Sawamura',
+      description: 'さわむらあもんのページ',
+      lang: 'ja',
+    },
+    manifest: {
+      name: 'Amon Sawamura',
+      short_name: 'あもん',
+      description: 'さわむらあもんのページ',
+      lang: 'ja',
+    },
+  },
   /*
    ** Build configuration
    */
@@ -54,5 +74,13 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {},
+    loaders: {
+      scss: {
+        implementation: Sass,
+        sassOptions: {
+          fiber: Fiber,
+        },
+      },
+    },
   },
 };
