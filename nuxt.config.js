@@ -2,6 +2,9 @@ export default {
   mode: 'universal',
   srcDir: 'src',
   head: {
+    htmlAttrs: {
+      lang: 'ja-jp',
+    },
     title: 'Amon Sawamura',
     meta: [
       { charset: 'utf-8' },
@@ -47,6 +50,13 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+  pwa: {
+    meta: {
+      name: 'Amon Sawamura',
+      description: 'さわむらあもんのページ',
+      lang: 'ja',
+    },
+  },
   /*
    ** Build configuration
    */
