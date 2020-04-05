@@ -3,25 +3,13 @@
     <h1>Amon Sawamura</h1>
     <p>明らかに作り途中だと思う</p>
     <ul :class="$style.snsList">
-      <li :class="$style.snsItem">
-        <a :class="$style.snsLink" class="twitter" href="https://twitter.com/amotarao" target="_blank" rel="noopener">
-          Twitter
-        </a>
-      </li>
-      <li :class="$style.snsItem">
-        <a :class="$style.snsLink" class="github" href="https://github.com/amotarao" target="_blank" rel="noopener">
-          GitHub
-        </a>
+      <li v-for="(item, i) in snsItems" :key="i" :class="$style.snsItem">
+        <a :class="[$style.snsLink, item.type]" :href="item.url" target="_blank" rel="noopener">{{ item.name }}</a>
       </li>
     </ul>
     <ul :class="$style.siteList">
-      <li :class="$style.siteItem">
-        <a :class="$style.siteLink" class="site" href="https://yukukuru.app" target="_blank" rel="noopener">ゆくくる</a>
-      </li>
-      <li :class="$style.siteItem">
-        <a :class="$style.siteLink" class="site" href="https://metro.chikoku.net" target="_blank" rel="noopener">
-          東京メトロ、遅れてる？
-        </a>
+      <li v-for="(item, i) in siteItems" :key="i" :class="$style.siteItem">
+        <a :class="[$style.siteLink, 'site']" :href="item.url" target="_blank" rel="noopener">{{ item.name }}</a>
       </li>
     </ul>
   </div>
@@ -30,7 +18,34 @@
 <script lang="ts">
 import Vue from 'vue';
 
-export default Vue.extend({});
+export default Vue.extend({
+  data() {
+    return {
+      snsItems: [
+        {
+          name: 'Twitter',
+          type: 'twitter',
+          url: 'https://twitter.com/amotarao',
+        },
+        {
+          name: 'GitHub',
+          type: 'github',
+          url: 'https://github.com/amotarao',
+        },
+      ],
+      siteItems: [
+        {
+          name: 'ゆくくる',
+          url: 'https://yukukuru.app',
+        },
+        {
+          name: '東京メトロ、遅れてる？',
+          url: 'https://metro.chikoku.net',
+        },
+      ],
+    };
+  },
+});
 </script>
 
 <style lang="scss" module>
