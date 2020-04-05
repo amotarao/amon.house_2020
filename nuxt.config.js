@@ -1,29 +1,39 @@
 import Sass from 'sass';
 import Fiber from 'fibers';
 
+const head = {
+  htmlAttrs: {
+    lang: 'ja-jp',
+  },
+  title: 'Amon Sawamura',
+  meta: [
+    { charset: 'utf-8' },
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'さわむらあもんのページ',
+    },
+  ],
+  link: [
+    { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+    { rel: 'apple-touch-icon', type: 'image/png', href: '/apple-touch-icon.png' },
+    { rel: 'icon', type: 'image/png', href: '/icon-192.png' },
+  ],
+};
+
+if (process.env.NOINDEX === 'true') {
+  head.meta.push({
+    hid: 'robots',
+    name: 'robots',
+    content: 'noindex',
+  });
+}
+
 export default {
   mode: 'universal',
   srcDir: 'src',
-  head: {
-    htmlAttrs: {
-      lang: 'ja-jp',
-    },
-    title: 'Amon Sawamura',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'さわむらあもんのページ',
-      },
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'apple-touch-icon', type: 'image/png', href: '/apple-touch-icon.png' },
-      { rel: 'icon', type: 'image/png', href: '/icon-192.png' },
-    ],
-  },
+  head,
   /*
    ** Customize the progress-bar color
    */
