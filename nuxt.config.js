@@ -56,6 +56,12 @@ export default {
       description: 'さわむらあもんのページ',
       lang: 'ja',
     },
+    manifest: {
+      name: 'Amon Sawamura',
+      short_name: 'あもん',
+      description: 'さわむらあもんのページ',
+      lang: 'ja',
+    },
   },
   /*
    ** Build configuration
