@@ -36,6 +36,7 @@ export default Vue.extend({});
 <style lang="scss" module>
 .container {
   margin: 0 auto;
+  padding: 2rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -48,7 +49,7 @@ export default Vue.extend({});
   }
 }
 
-.container .snsList,
+.snsList,
 .siteList {
   align-items: center;
   display: flex;
