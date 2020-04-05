@@ -1,6 +1,6 @@
 {
   "name": "amotarao.dev",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "My shining Nuxt.js project",
   "author": "Amon Sawamura",
   "private": true,
@@ -8,6 +8,7 @@
     "dev": "nuxt-ts",
     "build": "nuxt-ts build",
     "generate": "nuxt-ts generate",
+    "generate:noindex": "NOINDEX=true nuxt-ts generate",
     "start": "nuxt-ts start",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
   },
