@@ -15,7 +15,11 @@ export default {
         content: process.env.npm_package_description || '',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'apple-touch-icon', type: 'image/png', href: '/apple-touch-icon.png' },
+      { rel: 'icon', type: 'image/png', href: '/icon-192.png' },
+    ],
   },
   /*
    ** Customize the progress-bar color
