@@ -1,0 +1,9 @@
+{
+  "name": "amotarao.dev",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:amotarao/amotarao.dev.git",
+  "author": "Amon Sawamura <amon.sawamura@gmail.com>",
+  "license": "UNLICENSED",
+  "private": false
+}
