@@ -6,6 +6,9 @@ const app = express();
 
 const nuxt = new Nuxt({
   dev: false,
+  serverMiddleware: [
+    '~/src/nuxt/cacheControl.js',
+  ],
 });
 
 app.use(nuxt.render);
