@@ -5,5 +5,9 @@
   "repository": "git@github.com:amotarao/amotarao.dev.git",
   "author": "Amon Sawamura <amon.sawamura@gmail.com>",
   "license": "UNLICENSED",
-  "private": false
+  "private": false,
+  "scripts": {
+    "deploy:development": "yarn --cwd packages/app build && firebase deploy --only hosting:development,functions:ssrDev",
+    "deploy:production": "yarn --cwd packages/app build && firebase deploy --only hosting:production,functions:ssrProd"
+  }
 }

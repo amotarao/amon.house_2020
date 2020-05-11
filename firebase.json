@@ -2,12 +2,36 @@
   "functions": {
     "source": "packages/functions"
   },
-  "hosting": {
-    "public": "packages/app/dist",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ]
-  }
+  "hosting": [
+    {
+      "target": "production",
+      "public": "packages/app/public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "ssrProd"
+        }
+      ]
+    },
+    {
+      "target": "development",
+      "public": "packages/app/public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "ssrDev"
+        }
+      ]
+    }
+  ]
 }
