@@ -36,7 +36,7 @@ export default {
   srcDir: 'src',
   head,
   loading: { color: '#fff' },
-  css: [],
+  css: ['~/assets/scss/global.scss'],
   plugins: [],
   buildModules: ['@nuxt/typescript-build'],
   modules: ['@nuxtjs/axios', '@nuxtjs/pwa'],
