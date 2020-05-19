@@ -9,7 +9,7 @@ export default Vue.extend({
   computed: {
     canonicalLink(): string {
       const path = `${this.$route.path}`.replace(/\/+/g, '/').replace(/(^\/|\/$)/g, '');
-      return `https://amotarao.dev/${path}`;
+      return `https://amon.house/${path}`;
     },
   },
   head() {
