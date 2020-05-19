@@ -11,6 +11,17 @@
         "**/.*",
         "**/node_modules/**"
       ],
+      "headers": [
+        {
+          "source": "**/*.@(js|ico|jpeg|jpg|png|gif|css)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "max-age=604800"
+            }
+          ]
+        }
+      ],
       "rewrites": [
         {
           "source": "**",
@@ -25,6 +36,17 @@
         "firebase.json",
         "**/.*",
         "**/node_modules/**"
+      ],
+      "headers": [
+        {
+          "source": "**/*.@(js|ico|jpeg|jpg|png|gif|css)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "max-age=604800"
+            }
+          ]
+        }
       ],
       "rewrites": [
         {
