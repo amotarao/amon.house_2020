@@ -7,14 +7,14 @@ const head = {
   htmlAttrs: {
     lang: 'ja-jp',
   },
-  title: 'Amon Sawamura',
+  titleTemplate: (title) => (title ? `${title} - あもんはうす` : 'あもんはうす'),
   meta: [
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     {
       hid: 'description',
       name: 'description',
-      content: 'さわむらあもんのページ',
+      content: 'さわむらあもんの記録',
     },
   ],
   link: [
@@ -45,14 +45,14 @@ export default {
   axios: {},
   pwa: {
     meta: {
-      name: 'Amon Sawamura',
-      description: 'さわむらあもんのページ',
+      name: 'あもんはうす',
+      description: 'さわむらあもんの記録',
       lang: 'ja',
     },
     manifest: {
-      name: 'Amon Sawamura',
-      short_name: 'あもん',
-      description: 'さわむらあもんのページ',
+      name: 'あもんはうす',
+      short_name: 'あもんはうす',
+      description: 'さわむらあもんの記録',
       lang: 'ja',
     },
   },

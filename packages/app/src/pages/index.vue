@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.container">
-    <h1>Amon Sawamura</h1>
+    <h1>あもんはうす</h1>
     <p>明らかに作り途中だと思う</p>
     <ul :class="$style.snsList">
       <li v-for="(item, i) in snsItems" :key="i" :class="$style.snsItem">
