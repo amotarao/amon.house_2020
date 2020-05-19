@@ -1,6 +1,5 @@
 const express = require('express');
-const { Nuxt, Builder } = require('nuxt');
-const port = process.env.PORT || 3000;
+const { Nuxt } = require('nuxt');
 
 const app = express();
 
@@ -11,6 +10,11 @@ const nuxt = new Nuxt({
   ],
 });
 
-app.use(nuxt.render);
+app.use((req, res) => {
+  (async () => {
+    await nuxt.ready();
+    nuxt.render(req, res);
+  })();
+});
 
 exports.ssr = app;
