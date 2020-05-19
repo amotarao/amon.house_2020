@@ -19,6 +19,7 @@ const head = {
     { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     { rel: 'apple-touch-icon', type: 'image/png', href: '/apple-touch-icon.png' },
     { rel: 'icon', type: 'image/png', href: '/icon-192.png' },
+    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap' },
   ],
 };
 
