@@ -6,11 +6,15 @@
 import Vue from 'vue';
 
 export default Vue.extend({
+  computed: {
+    canonicalLink(): string {
+      const path = `${this.$route.path}`.replace(/\/+/g, '/').replace(/(^\/|\/$)/g, '');
+      return `https://amotarao.dev/${path}`;
+    },
+  },
   head() {
-    const canonicalLink = `https://amotarao.dev/${this.$route.path}/`.replace(/\/+$/, '/');
-
     return {
-      link: [{ hid: 'canonical', rel: 'canonical', href: canonicalLink }],
+      link: [{ hid: 'canonical', rel: 'canonical', href: (this as any).canonicalLink }],
     };
   },
 });
