@@ -4,16 +4,12 @@
     <p>明らかに作り途中だと思う</p>
     <ul :class="$style.snsList">
       <li v-for="(item, i) in snsItems" :key="i" :class="$style.snsItem">
-        <a :class="$style.snsLink" :href="item.url" target="_blank" rel="noopener" :data-type="item.type">
-          {{ item.name }}
-        </a>
+        <basic-button :href="item.url" :data-type="item.type">{{ item.name }}</basic-button>
       </li>
     </ul>
     <ul :class="$style.siteList">
       <li v-for="(item, i) in siteItems" :key="i" :class="$style.siteItem">
-        <a :class="$style.siteLink" :href="item.url" target="_blank" rel="noopener" data-type="site">
-          {{ item.name }}
-        </a>
+        <basic-button :href="item.url" data-type="site" data-size="small">{{ item.name }}</basic-button>
       </li>
     </ul>
   </div>
@@ -21,8 +17,12 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import BasicButton from '@/components/atoms/BasicButton.vue';
 
 export default Vue.extend({
+  components: {
+    BasicButton,
+  },
   data() {
     return {
       snsItems: [
@@ -83,69 +83,5 @@ export default Vue.extend({
 .siteItem {
   margin: 0.5rem;
   text-align: left;
-}
-
-.snsLink,
-.siteLink {
-  border: 2px solid;
-  border-radius: 4px;
-  display: inline-block;
-  font-family: 'Roboto';
-  font-size: 1.25rem;
-  font-weight: bold;
-  padding: 0.5em 2em;
-  text-decoration: none;
-  transition: all 0.3s ease-out;
-
-  background-origin: border-box;
-  background-size: calc(200% + 5em) 100%;
-  background-position: 0 0;
-
-  &:hover {
-    background-position: 100% 100%;
-  }
-
-  &[data-type~='twitter'] {
-    $base-color: rgb(29, 161, 242);
-    $sub-color: #fff;
-
-    border-color: $base-color;
-    background-image: linear-gradient(150deg, $base-color 50%, $sub-color 50%);
-    color: $sub-color;
-
-    &:hover {
-      color: $base-color;
-    }
-  }
-
-  &[data-type~='github'] {
-    $base-color: #24292e;
-    $sub-color: #fff;
-
-    border-color: $base-color;
-    background-image: linear-gradient(150deg, $base-color 50%, $sub-color 50%);
-    color: $sub-color;
-
-    &:hover {
-      color: $base-color;
-    }
-  }
-
-  &[data-type~='site'] {
-    $base-color: #4caf50;
-    $sub-color: #fff;
-
-    border-color: $base-color;
-    background-image: linear-gradient(150deg, $base-color 50%, $sub-color 50%);
-    color: $sub-color;
-
-    &:hover {
-      color: $base-color;
-    }
-  }
-}
-
-.siteLink {
-  font-size: 1rem;
 }
 </style>
