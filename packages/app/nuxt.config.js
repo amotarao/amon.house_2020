@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Sass from 'sass';
 import Fiber from 'fibers';
 import { config } from 'dotenv';
@@ -54,7 +55,7 @@ export default {
   css: ['~/assets/scss/global.scss'],
   plugins: [],
   buildModules: ['@nuxt/typescript-build', '@nuxtjs/dotenv'],
-  modules: ['@nuxtjs/axios', '@nuxtjs/pwa'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/pwa', '@nuxtjs/sitemap'],
   dotenv: {
     path: './',
   },
@@ -70,6 +71,38 @@ export default {
       short_name: 'あもんはうす',
       description: 'さわむらあもんの記録',
       lang: 'ja',
+    },
+  },
+  sitemap: {
+    hostname: 'https://amon.house',
+    gzip: true,
+    async routes() {
+      const q = {
+        limit: 1000,
+        fields: ['id', 'updatedAt'].join(','),
+      };
+      const qs = Object.entries(q)
+        .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
+        .join('&');
+
+      const response = await axios
+        .get(`https://${process.env.MICRO_CMS_SERVICE_ID}.microcms.io/api/v1/posts?${qs}`, {
+          headers: {
+            'X-API-KEY': process.env.MICRO_CMS_API_KEY,
+          },
+        })
+        .catch((error) => {
+          return { data: null, status: error.response.status };
+        });
+
+      if (response.data === null) {
+        return [];
+      }
+
+      return response.data.contents.map((post) => ({
+        url: `/posts/${post.id}`,
+        lastmod: post.updatedAt,
+      }));
     },
   },
   build: {
