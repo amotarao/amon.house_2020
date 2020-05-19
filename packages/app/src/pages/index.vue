@@ -4,12 +4,16 @@
     <p>明らかに作り途中だと思う</p>
     <ul :class="$style.snsList">
       <li v-for="(item, i) in snsItems" :key="i" :class="$style.snsItem">
-        <a :class="[$style.snsLink, item.type]" :href="item.url" target="_blank" rel="noopener">{{ item.name }}</a>
+        <a :class="$style.snsLink" :href="item.url" target="_blank" rel="noopener" :data-type="item.type">
+          {{ item.name }}
+        </a>
       </li>
     </ul>
     <ul :class="$style.siteList">
       <li v-for="(item, i) in siteItems" :key="i" :class="$style.siteItem">
-        <a :class="[$style.siteLink, 'site']" :href="item.url" target="_blank" rel="noopener">{{ item.name }}</a>
+        <a :class="$style.siteLink" :href="item.url" target="_blank" rel="noopener" data-type="site">
+          {{ item.name }}
+        </a>
       </li>
     </ul>
   </div>
@@ -101,7 +105,7 @@ export default Vue.extend({
     background-position: 100% 100%;
   }
 
-  &[class~='twitter'] {
+  &[data-type~='twitter'] {
     $base-color: rgb(29, 161, 242);
     $sub-color: #fff;
 
@@ -114,7 +118,7 @@ export default Vue.extend({
     }
   }
 
-  &[class~='github'] {
+  &[data-type~='github'] {
     $base-color: #24292e;
     $sub-color: #fff;
 
@@ -127,7 +131,7 @@ export default Vue.extend({
     }
   }
 
-  &[class~='site'] {
+  &[data-type~='site'] {
     $base-color: #4caf50;
     $sub-color: #fff;
 
