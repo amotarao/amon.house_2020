@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "private": false,
   "scripts": {
-    "deploy:development": "yarn --cwd packages/app build && firebase deploy --only hosting:development,functions:ssrDev",
+    "deploy:development": "yarn --cwd packages/app build:noindex && firebase deploy --only hosting:development,functions:ssrDev",
     "deploy:production": "yarn --cwd packages/app build && firebase deploy --only hosting:production,functions:ssrProd"
   }
 }
