@@ -35,34 +35,11 @@ export default {
   mode: 'universal',
   srcDir: 'src',
   head,
-  /*
-   ** Customize the progress-bar color
-   */
   loading: { color: '#fff' },
-  /*
-   ** Global CSS
-   */
   css: [],
-  /*
-   ** Plugins to load before mounting the App
-   */
   plugins: [],
-  /*
-   ** Nuxt.js dev-modules
-   */
   buildModules: ['@nuxt/typescript-build'],
-  /*
-   ** Nuxt.js modules
-   */
-  modules: [
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
-    '@nuxtjs/pwa',
-  ],
-  /*
-   ** Axios module configuration
-   ** See https://axios.nuxtjs.org/options
-   */
+  modules: ['@nuxtjs/axios', '@nuxtjs/pwa'],
   axios: {},
   pwa: {
     meta: {
@@ -77,14 +54,7 @@ export default {
       lang: 'ja',
     },
   },
-  /*
-   ** Build configuration
-   */
   build: {
-    /*
-     ** You can extend webpack config here
-     */
-    extend(config, ctx) {},
     loaders: {
       scss: {
         implementation: Sass,
