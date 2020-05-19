@@ -1,6 +1,8 @@
 import Sass from 'sass';
 import Fiber from 'fibers';
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 const head = {
   htmlAttrs: {
     lang: 'ja-jp',
@@ -56,6 +58,11 @@ export default {
   },
   build: {
     loaders: {
+      cssModules: {
+        modules: {
+          localIdentName: isProduction ? '[hash:base64:5]' : '[name]_[local]_[hash:base64:5]',
+        },
+      },
       scss: {
         implementation: Sass,
         sassOptions: {
