@@ -50,9 +50,10 @@ export default Vue.extend({
 
 <style lang="scss" module>
 .container {
+  font-family: 'Roboto';
   margin: 0 auto;
   padding: 2rem;
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
