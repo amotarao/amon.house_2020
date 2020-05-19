@@ -22,7 +22,6 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "^0.4.7",
     "@nuxtjs/axios": "^5.3.6",
-    "@nuxtjs/pwa": "^3.0.0-0",
     "@nuxtjs/sitemap": "^2.3.0",
     "nuxt": "^2.12.2"
   },
@@ -31,6 +30,7 @@
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/eslint-config-typescript": "^2.0.0",
     "@nuxtjs/eslint-module": "^2.0.0",
+    "@nuxtjs/pwa": "^3.0.0-0",
     "babel-eslint": "^10.0.1",
     "eslint": "^7.0.0",
     "eslint-config-prettier": "^6.11.0",

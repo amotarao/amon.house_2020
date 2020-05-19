@@ -54,12 +54,11 @@ export default {
   loading: { color: '#fff' },
   css: ['~/assets/scss/global.scss'],
   plugins: [],
-  buildModules: ['@nuxt/typescript-build', '@nuxtjs/dotenv'],
-  modules: ['@nuxtjs/axios', '@nuxtjs/pwa', '@nuxtjs/sitemap'],
+  buildModules: ['@nuxt/typescript-build', '@nuxtjs/dotenv', '@nuxtjs/pwa'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/sitemap'],
   dotenv: {
     path: './',
   },
-  axios: {},
   pwa: {
     meta: {
       name: 'あもんはうす',
@@ -75,7 +74,6 @@ export default {
   },
   sitemap: {
     hostname: 'https://amon.house',
-    gzip: true,
     async routes() {
       const q = {
         limit: 1000,
