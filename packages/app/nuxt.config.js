@@ -1,5 +1,8 @@
 import Sass from 'sass';
 import Fiber from 'fibers';
+import { config } from 'dotenv';
+
+config();
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -40,8 +43,11 @@ export default {
   loading: { color: '#fff' },
   css: ['~/assets/scss/global.scss'],
   plugins: [],
-  buildModules: ['@nuxt/typescript-build'],
+  buildModules: ['@nuxt/typescript-build', '@nuxtjs/dotenv'],
   modules: ['@nuxtjs/axios', '@nuxtjs/pwa'],
+  dotenv: {
+    path: './',
+  },
   axios: {},
   pwa: {
     meta: {
