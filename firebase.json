@@ -1,7 +1,4 @@
 {
-  "functions": {
-    "source": "packages/functions"
-  },
   "hosting": [
     {
       "target": "production",
@@ -25,7 +22,10 @@
       "rewrites": [
         {
           "source": "**",
-          "function": "ssrProd"
+          "run": {
+            "serviceId": "amon-house",
+            "region": "asia-northeast1"
+          }
         }
       ]
     },
@@ -51,7 +51,10 @@
       "rewrites": [
         {
           "source": "**",
-          "function": "ssrDev"
+          "run": {
+            "serviceId": "amon-house-dev",
+            "region": "asia-northeast1"
+          }
         }
       ]
     }
