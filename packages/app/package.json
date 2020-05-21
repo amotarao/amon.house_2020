@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "nuxt-ts",
-    "build": "rm -rf public/* && nuxt-ts build && cp -R .nuxt/dist/client public/_nuxt && cp -R src/static/* public",
+    "build": "nuxt-ts build",
     "build:noindex": "NOINDEX=true yarn build",
     "start": "nuxt-ts start",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
