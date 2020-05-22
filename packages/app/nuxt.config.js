@@ -23,7 +23,7 @@ const head = {
     {
       hid: 'og:image',
       property: 'og:image',
-      content: `https://i.imgg.app/${process.env.IMGG_USER_ID}/${process.env.IMGG_IMAGE_ID}/jpg?title=%E3%81%82%E3%82%82%E3%82%93%E3%81%AF%E3%81%86%E3%81%99`,
+      content: `https://i.imgg.app/amon/amon-house/jpg?title=%E3%81%82%E3%82%82%E3%82%93%E3%81%AF%E3%81%86%E3%81%99`,
     },
     { hid: 'og:image:width', property: 'og:image:width', content: '1200' },
     { hid: 'og:image:height', property: 'og:image:height', content: '630' },

@@ -38,7 +38,7 @@ export default Vue.extend({
       if (this.thumbnail !== null) {
         return `${this.thumbnail.url}?w=450&h=300&fit=crop`;
       }
-      return `https://i.imgg.app/${process.env.IMGG_USER_ID}/${process.env.IMGG_IMAGE_ID}/jpg?title=${encodedTitle}`;
+      return `https://i.imgg.app/amon/amon-house/jpg?title=${encodedTitle}`;
     },
     updatedAtDate(): Date {
       return new Date(this.updatedAt);

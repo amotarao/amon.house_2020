@@ -76,7 +76,7 @@ export default Vue.extend({
     const encodedTitle = encodeURIComponent(postData.title);
     const thumbnail = postData.thumbnail
       ? `${postData.thumbnail}?w=1200&h=630&fit=crop`
-      : `https://i.imgg.app/${process.env.IMGG_USER_ID}/${process.env.IMGG_IMAGE_ID}/jpg?title=${encodedTitle}`;
+      : `https://i.imgg.app/amon/amon-house/jpg?title=${encodedTitle}`;
 
     return {
       title: postData.title,
