@@ -19,6 +19,7 @@ const head = {
     { hid: 'og:type', property: 'og:type', content: 'website' },
     { hid: 'og:title', property: 'og:title', content: 'あもんはうす' },
     { hid: 'og:description', property: 'og:description', content: 'さわむらあもんの記録' },
+    { hid: 'og:url', property: 'og:url', content: 'https://amon.house' },
     { hid: 'og:site_name', property: 'og:site_name', content: 'あもんはうす' },
     {
       hid: 'og:image',
