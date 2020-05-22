@@ -41,18 +41,23 @@ export default Vue.extend({
       fields: ['id', 'title', 'thumbnail', 'updatedAt'].join(','),
     };
     const qs = Object.entries(q)
-      .filter((q): q is [string, string] => q !== null)
+      .filter((q): q is [string, string] => q[1] !== null)
       .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
       .join('&');
 
+    const url = `https://${process.env.MICRO_CMS_SERVICE_ID}.microcms.io/api/v1/posts?${qs}`;
+
     const response = await $axios
-      .get<{ contents: PickedPost[] }>(`https://${process.env.MICRO_CMS_SERVICE_ID}.microcms.io/api/v1/posts?${qs}`, {
+      .get<{ contents: PickedPost[] }>(url, {
         headers: {
           'X-API-KEY': process.env.MICRO_CMS_API_KEY,
         },
       })
       .catch((error) => {
-        return { data: null, status: error.response.status };
+        if (error.response) {
+          return { data: null, status: error.response.status };
+        }
+        return { data: null, status: 500 };
       });
 
     if (response.data === null) {

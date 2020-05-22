@@ -83,14 +83,19 @@ export default {
         .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
         .join('&');
 
+      const url = `https://${process.env.MICRO_CMS_SERVICE_ID}.microcms.io/api/v1/posts?${qs}`;
+
       const response = await axios
-        .get(`https://${process.env.MICRO_CMS_SERVICE_ID}.microcms.io/api/v1/posts?${qs}`, {
+        .get(url, {
           headers: {
             'X-API-KEY': process.env.MICRO_CMS_API_KEY,
           },
         })
         .catch((error) => {
-          return { data: null, status: error.response.status };
+          if (error.response) {
+            return { data: null, status: error.response.status };
+          }
+          return { data: null, status: 500 };
         });
 
       if (response.data === null) {

@@ -4,6 +4,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import { AxiosError } from 'axios';
 import PostPage from '@/components/pages/PostPage.vue';
 
 export type Post = {
@@ -36,18 +37,23 @@ export default Vue.extend({
       draftKey: typeof query.draftKey === 'string' ? query.draftKey : null,
     };
     const qs = Object.entries(q)
-      .filter((q): q is [string, string] => q !== null)
+      .filter((q): q is [string, string] => q[1] !== null)
       .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
       .join('&');
 
+    const url = `https://${process.env.MICRO_CMS_SERVICE_ID}.microcms.io/api/v1/posts/${params.id}?${qs}`;
+
     const response = await $axios
-      .get<Post>(`https://${process.env.MICRO_CMS_SERVICE_ID}.microcms.io/api/v1/posts/${params.id}?${qs}`, {
+      .get<Post>(url, {
         headers: {
           'X-API-KEY': process.env.MICRO_CMS_API_KEY,
         },
       })
-      .catch((error) => {
-        return { data: null, status: error.response.status };
+      .catch((error: AxiosError) => {
+        if (error.response) {
+          return { data: null, status: error.response.status };
+        }
+        return { data: null, status: 500 };
       });
 
     if (response.data === null) {
