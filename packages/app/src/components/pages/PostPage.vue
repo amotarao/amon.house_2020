@@ -15,7 +15,14 @@
     <!-- eslint-disable-next-line vue/no-v-html -->
     <section :class="$style.contents" v-html="body"></section>
     <footer :class="$style.footer">
-      <a :class="$style.share" :href="tweetUrl" aria-label="ツイートする" data-type="twitter">
+      <a
+        :class="$style.share"
+        :href="tweetUrl"
+        target="_blank"
+        rel="noopener"
+        aria-label="ツイートする"
+        data-type="twitter"
+      >
         <svg xmlns="http://www.w3.org/2000/svg" height="400" width="400" viewBox="0 0 400 400">
           <path fill="none" d="M0 0h400v400H0z" />
           <path
