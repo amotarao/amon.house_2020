@@ -61,6 +61,7 @@ export default Vue.extend({
 
 <style lang="scss" module>
 .button {
+  @include button-base;
   border: 2px solid;
   border-radius: 4px;
   display: inline-block;
