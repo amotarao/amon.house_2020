@@ -63,7 +63,7 @@ export default {
       document.querySelector('#__layout').style = null;
     },
   },
-  plugins: [],
+  plugins: [{ src: '~/plugins/ga.ts', mode: 'client' }],
   buildModules: ['@nuxt/typescript-build', '@nuxtjs/style-resources', '@nuxtjs/pwa'],
   modules: ['@nuxtjs/axios', '@nuxtjs/sitemap'],
   styleResources: {
@@ -119,6 +119,7 @@ export default {
     },
   },
   env: {
+    GA_ID: process.env.GA_ID,
     MICRO_CMS_SERVICE_ID: process.env.MICRO_CMS_SERVICE_ID,
     MICRO_CMS_API_KEY: process.env.MICRO_CMS_API_KEY,
   },

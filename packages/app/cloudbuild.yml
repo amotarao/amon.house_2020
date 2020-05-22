@@ -16,6 +16,8 @@ steps:
       - '--cache-from'
       - 'gcr.io/$PROJECT_ID/$_SERVICE_NAME:latest'
       - '--build-arg'
+      - 'GA_ID=$_GA_ID'
+      - '--build-arg'
       - 'MICRO_CMS_SERVICE_ID=$_MICRO_CMS_SERVICE_ID'
       - '--build-arg'
       - 'MICRO_CMS_API_KEY=$_MICRO_CMS_API_KEY'
