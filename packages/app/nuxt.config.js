@@ -56,6 +56,12 @@ export default {
   pageTransition: {
     name: 'page',
     mode: 'out-in',
+    beforeEnter() {
+      document.querySelector('#__layout').style.overflow = 'hidden';
+    },
+    afterEnter() {
+      document.querySelector('#__layout').style = null;
+    },
   },
   plugins: [],
   buildModules: ['@nuxt/typescript-build', '@nuxtjs/style-resources', '@nuxtjs/pwa'],
