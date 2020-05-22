@@ -1,24 +1,72 @@
 <template>
   <div :class="$style.container">
-    <h1>Amon Sawamura</h1>
-    <p>明らかに作り途中だと思う</p>
-    <ul :class="$style.snsList">
-      <li v-for="(item, i) in snsItems" :key="i" :class="$style.snsItem">
-        <a :class="[$style.snsLink, item.type]" :href="item.url" target="_blank" rel="noopener">{{ item.name }}</a>
-      </li>
-    </ul>
-    <ul :class="$style.siteList">
-      <li v-for="(item, i) in siteItems" :key="i" :class="$style.siteItem">
-        <a :class="[$style.siteLink, 'site']" :href="item.url" target="_blank" rel="noopener">{{ item.name }}</a>
-      </li>
-    </ul>
+    <div :class="$style.inner">
+      <h1 :class="$style.title">あもんはうす</h1>
+      <ul :class="$style.postList">
+        <li v-for="(item, i) in posts" :key="i" :class="$style.postItem">
+          <post-card v-bind="item" />
+        </li>
+      </ul>
+      <ul :class="$style.snsList">
+        <li v-for="(item, i) in snsItems" :key="i" :class="$style.snsItem">
+          <basic-button :href="item.url" :data-type="item.type">{{ item.name }}</basic-button>
+        </li>
+      </ul>
+      <ul :class="$style.siteList">
+        <li v-for="(item, i) in siteItems" :key="i" :class="$style.siteItem">
+          <basic-button :href="item.url" data-type="site" data-size="small">{{ item.name }}</basic-button>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
+import PostCard from '@/components/molecules/PostCard.vue';
+import BasicButton from '@/components/atoms/BasicButton.vue';
+import { Post } from '@/pages/posts/_id.vue';
+
+type PickedPost = Pick<Post, 'id' | 'title' | 'thumbnail' | 'updatedAt'>;
 
 export default Vue.extend({
+  components: {
+    PostCard,
+    BasicButton,
+  },
+  async asyncData({ $axios, query, error }): Promise<{ posts: PickedPost[] } | void> {
+    const q = {
+      draftKey: typeof query.draftKey === 'string' ? query.draftKey : null,
+      limit: 3,
+      fields: ['id', 'title', 'thumbnail', 'updatedAt'].join(','),
+    };
+    const qs = Object.entries(q)
+      .filter((q): q is [string, string] => q[1] !== null)
+      .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
+      .join('&');
+
+    const url = `https://${process.env.MICRO_CMS_SERVICE_ID}.microcms.io/api/v1/posts?${qs}`;
+
+    const response = await $axios
+      .get<{ contents: PickedPost[] }>(url, {
+        headers: {
+          'X-API-KEY': process.env.MICRO_CMS_API_KEY,
+        },
+      })
+      .catch((error) => {
+        if (error.response) {
+          return { data: null, status: error.response.status };
+        }
+        return { data: null, status: 500 };
+      });
+
+    if (response.data === null) {
+      error({ statusCode: response.status, message: '' });
+      return;
+    }
+
+    return { posts: response.data.contents };
+  },
   data() {
     return {
       snsItems: [
@@ -50,18 +98,41 @@ export default Vue.extend({
 
 <style lang="scss" module>
 .container {
+  font-family: 'Roboto';
   margin: 0 auto;
-  padding: 2rem;
-  min-height: 100vh;
+  padding: 2rem 1rem;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+}
 
-  > * {
-    margin-bottom: 1rem;
-  }
+.inner {
+  min-height: fit-content;
+  max-width: 100%;
+}
+
+.title {
+  margin-bottom: 2rem;
+}
+
+.postList {
+  margin: 0 auto 2rem;
+  width: 720px;
+  max-width: 100%;
+  list-style: none;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+  grid-gap: 1rem;
+}
+
+.postItem {
+  margin: auto;
+  max-width: 320px;
+  width: 100%;
 }
 
 .snsList,
@@ -78,69 +149,5 @@ export default Vue.extend({
 .siteItem {
   margin: 0.5rem;
   text-align: left;
-}
-
-.snsLink,
-.siteLink {
-  border: 2px solid;
-  border-radius: 4px;
-  display: inline-block;
-  font-family: 'Roboto';
-  font-size: 1.25rem;
-  font-weight: bold;
-  padding: 0.5em 2em;
-  text-decoration: none;
-  transition: all 0.3s ease-out;
-
-  background-origin: border-box;
-  background-size: calc(200% + 5em) 100%;
-  background-position: 0 0;
-
-  &:hover {
-    background-position: 100% 100%;
-  }
-
-  &[class~='twitter'] {
-    $base-color: rgb(29, 161, 242);
-    $sub-color: #fff;
-
-    border-color: $base-color;
-    background-image: linear-gradient(150deg, $base-color 50%, $sub-color 50%);
-    color: $sub-color;
-
-    &:hover {
-      color: $base-color;
-    }
-  }
-
-  &[class~='github'] {
-    $base-color: #24292e;
-    $sub-color: #fff;
-
-    border-color: $base-color;
-    background-image: linear-gradient(150deg, $base-color 50%, $sub-color 50%);
-    color: $sub-color;
-
-    &:hover {
-      color: $base-color;
-    }
-  }
-
-  &[class~='site'] {
-    $base-color: #4caf50;
-    $sub-color: #fff;
-
-    border-color: $base-color;
-    background-image: linear-gradient(150deg, $base-color 50%, $sub-color 50%);
-    color: $sub-color;
-
-    &:hover {
-      color: $base-color;
-    }
-  }
-}
-
-.siteLink {
-  font-size: 1rem;
 }
 </style>

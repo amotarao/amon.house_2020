@@ -1,4 +1,4 @@
-# amotarao.dev
+# amon.house
 
 > My shining Nuxt.js project
 

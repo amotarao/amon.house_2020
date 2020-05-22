@@ -1,0 +1,22 @@
+images:
+  - 'gcr.io/$PROJECT_ID/$_SERVICE_NAME:latest'
+
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - 'docker pull gcr.io/$PROJECT_ID/$_SERVICE_NAME:latest || exit 0'
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '--tag'
+      - 'gcr.io/$PROJECT_ID/$_SERVICE_NAME:latest'
+      - '--cache-from'
+      - 'gcr.io/$PROJECT_ID/$_SERVICE_NAME:latest'
+      - '--build-arg'
+      - 'MICRO_CMS_SERVICE_ID=$_MICRO_CMS_SERVICE_ID'
+      - '--build-arg'
+      - 'MICRO_CMS_API_KEY=$_MICRO_CMS_API_KEY'
+      - '.'

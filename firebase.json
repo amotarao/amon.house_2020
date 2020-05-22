@@ -1,7 +1,4 @@
 {
-  "functions": {
-    "source": "packages/functions"
-  },
   "hosting": [
     {
       "target": "production",
@@ -11,10 +8,33 @@
         "**/.*",
         "**/node_modules/**"
       ],
+      "headers": [
+        {
+          "source": "**/*.@(js|json|jpeg|jpg|png|gif|css)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=604800, s-maxage=604800"
+            }
+          ]
+        },
+        {
+          "source": "**/sw.js",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=0"
+            }
+          ]
+        }
+      ],
       "rewrites": [
         {
           "source": "**",
-          "function": "ssrProd"
+          "run": {
+            "serviceId": "amon-house",
+            "region": "asia-northeast1"
+          }
         }
       ]
     },
@@ -26,10 +46,33 @@
         "**/.*",
         "**/node_modules/**"
       ],
+      "headers": [
+        {
+          "source": "**/*.@(js|json|jpeg|jpg|png|gif|css)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=604800, s-maxage=604800"
+            }
+          ]
+        },
+        {
+          "source": "**/sw.js",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=0"
+            }
+          ]
+        }
+      ],
       "rewrites": [
         {
           "source": "**",
-          "function": "ssrDev"
+          "run": {
+            "serviceId": "amon-house-dev",
+            "region": "asia-northeast1"
+          }
         }
       ]
     }
