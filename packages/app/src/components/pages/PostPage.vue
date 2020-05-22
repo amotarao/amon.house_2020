@@ -74,6 +74,11 @@ export default Vue.extend({
       required: true,
     },
   },
+  data() {
+    return {
+      isSupportedShare: false,
+    };
+  },
   computed: {
     createdAtStr(): string {
       return formatDate(this.createdAt);
@@ -88,12 +93,9 @@ export default Vue.extend({
       const url = encodeURIComponent(this.url);
       return `https://twitter.com/intent/tweet?url=${url}&via=amotarao`;
     },
-    isSupportedShare(): Boolean {
-      if (typeof window === 'undefined') {
-        return false;
-      }
-      return 'share' in window.navigator;
-    },
+  },
+  mounted() {
+    this.isSupportedShare = 'share' in window.navigator;
   },
   methods: {
     async share() {
