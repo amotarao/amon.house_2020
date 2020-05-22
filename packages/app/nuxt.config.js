@@ -54,8 +54,11 @@ export default {
   loading: { color: '#fff' },
   css: ['~/assets/scss/global.scss'],
   plugins: [],
-  buildModules: ['@nuxt/typescript-build', '@nuxtjs/pwa'],
+  buildModules: ['@nuxt/typescript-build', '@nuxtjs/style-resources', '@nuxtjs/pwa'],
   modules: ['@nuxtjs/axios', '@nuxtjs/sitemap'],
+  styleResources: {
+    scss: ['./src/assets/scss/_variables.scss', './src/assets/scss/_mixins.scss'],
+  },
   pwa: {
     meta: {
       name: 'あもんはうす',
