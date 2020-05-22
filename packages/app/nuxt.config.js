@@ -51,11 +51,18 @@ export default {
   mode: 'universal',
   srcDir: 'src',
   head,
-  loading: { color: '#fff' },
   css: ['~/assets/scss/global.scss'],
+  loading: { color: 'var(--text-color)' },
+  pageTransition: {
+    name: 'page',
+    mode: 'out-in',
+  },
   plugins: [],
-  buildModules: ['@nuxt/typescript-build', '@nuxtjs/pwa'],
+  buildModules: ['@nuxt/typescript-build', '@nuxtjs/style-resources', '@nuxtjs/pwa'],
   modules: ['@nuxtjs/axios', '@nuxtjs/sitemap'],
+  styleResources: {
+    scss: ['./src/assets/scss/_variables.scss', './src/assets/scss/_mixins.scss'],
+  },
   pwa: {
     meta: {
       name: 'あもんはうす',

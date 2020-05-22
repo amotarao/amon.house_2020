@@ -1,3 +1,19 @@
+:root {
+  --primary-color: #673ab7;
+  --text-color: #333;
+  --sub-color: #999;
+  --bg-color: #fafafa;
+  --shadow-color: #{rgba(#333, 0.2)};
+
+  @media (prefers-color-scheme: dark) {
+    --primary-color: #673ab7;
+    --text-color: #eee;
+    --sub-color: #aaa;
+    --bg-color: #1a1a1a;
+    --shadow-color: #{rgba(#eee, 0.2)};
+  }
+}
+
 main {
   display: block;
 }
@@ -12,6 +28,8 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  background: $bg;
+  color: $text;
 }
 
 *,
@@ -27,4 +45,20 @@ body,
 #__nuxt,
 #__layout {
   height: 100%;
+}
+
+.page {
+  &-enter-active {
+    transition: opacity .1s ease-out, transform .1s ease-out;
+  }
+  &-enter {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+  &-leave-active {
+    transition: opacity .1s ease-out;
+  }
+  &-leave-to {
+    opacity: 0;
+  }
 }

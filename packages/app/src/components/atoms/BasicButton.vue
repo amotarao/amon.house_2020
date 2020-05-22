@@ -90,15 +90,15 @@ export default Vue.extend({
   }
 
   &[data-type~='twitter'] {
-    @include with-color(#1da1f2, #fff);
+    @include with-color(#1da1f2, #fafafa);
   }
 
   &[data-type~='github'] {
-    @include with-color(#24292e, #fff);
+    @include with-color(#24292e, #fafafa);
   }
 
   &[data-type~='site'] {
-    @include with-color(#4caf50, #fff);
+    @include with-color($primary, #fafafa);
   }
 
   &[data-size='small'] {

@@ -53,7 +53,7 @@ export default Vue.extend({
 <style lang="scss" module>
 .card {
   border-radius: 8px;
-  box-shadow: 0 2px 4px 0 rgba(#000, 0.2);
+  box-shadow: 0 2px 4px 0 $shadow;
   color: inherit;
   display: block;
   overflow: hidden;
@@ -62,7 +62,7 @@ export default Vue.extend({
   transition: all 0.2s ease-out;
 
   &:hover {
-    box-shadow: 0 4px 8px 0 rgba(#000, 0.2);
+    box-shadow: 0 4px 8px 0 $shadow;
   }
 }
 
@@ -89,7 +89,7 @@ export default Vue.extend({
 }
 
 .date {
-  color: #999;
+  color: $sub;
   font-size: 0.8rem;
   line-height: 1.5;
   padding: 0.5rem 1rem;
