@@ -22,6 +22,7 @@ import Vue, { PropOptions } from 'vue';
 import { formatDate } from '@/utils/date';
 
 export default Vue.extend({
+  inheritAttrs: false,
   props: {
     title: {
       type: String,
