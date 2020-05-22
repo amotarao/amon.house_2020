@@ -1,5 +1,5 @@
 <template>
-  <post-page v-bind="postData" />
+  <post-page v-bind="postData" :url="canonicalUrl" />
 </template>
 
 <script lang="ts">
