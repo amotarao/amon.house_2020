@@ -3,6 +3,7 @@
   --text-color: #333;
   --sub-color: #999;
   --bg-color: #fafafa;
+  --bg2-color: #ddd;
   --shadow-color: #{rgba(#333, 0.2)};
 
   @media (prefers-color-scheme: dark) {
@@ -10,6 +11,7 @@
     --text-color: #eee;
     --sub-color: #aaa;
     --bg-color: #1a1a1a;
+    --bg2-color: #333;
     --shadow-color: #{rgba(#eee, 0.2)};
   }
 }
