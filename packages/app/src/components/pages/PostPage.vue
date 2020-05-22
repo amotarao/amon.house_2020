@@ -74,7 +74,7 @@ export default Vue.extend({
 .date {
   display: flex;
   flex-wrap: wrap;
-  color: #999;
+  color: $sub;
   font-size: 0.9rem;
   line-height: 1.5;
   margin-bottom: 4rem;

@@ -51,7 +51,7 @@ export default {
   mode: 'universal',
   srcDir: 'src',
   head,
-  loading: { color: '#fff' },
+  loading: { color: 'var(--text-color)' },
   css: ['~/assets/scss/global.scss'],
   plugins: [],
   buildModules: ['@nuxt/typescript-build', '@nuxtjs/style-resources', '@nuxtjs/pwa'],
