@@ -90,11 +90,11 @@ export default Vue.extend({
   }
 
   &[data-type~='twitter'] {
-    @include with-color(#1da1f2, #fafafa);
+    @include with-color($twitter, #fafafa);
   }
 
   &[data-type~='github'] {
-    @include with-color(#24292e, #fafafa);
+    @include with-color($github, #fafafa);
   }
 
   &[data-type~='site'] {
