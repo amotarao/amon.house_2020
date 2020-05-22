@@ -54,11 +54,8 @@ export default {
   loading: { color: '#fff' },
   css: ['~/assets/scss/global.scss'],
   plugins: [],
-  buildModules: ['@nuxt/typescript-build', '@nuxtjs/dotenv', '@nuxtjs/pwa'],
+  buildModules: ['@nuxt/typescript-build', '@nuxtjs/pwa'],
   modules: ['@nuxtjs/axios', '@nuxtjs/sitemap'],
-  dotenv: {
-    path: './',
-  },
   pwa: {
     meta: {
       name: 'あもんはうす',
@@ -107,6 +104,10 @@ export default {
         lastmod: post.updatedAt,
       }));
     },
+  },
+  env: {
+    MICRO_CMS_SERVICE_ID: process.env.MICRO_CMS_SERVICE_ID,
+    MICRO_CMS_API_KEY: process.env.MICRO_CMS_API_KEY,
   },
   build: {
     loaders: {
