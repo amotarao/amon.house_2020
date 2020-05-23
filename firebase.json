@@ -75,6 +75,40 @@
           }
         }
       ]
+    },
+    {
+      "target": "api-prod",
+      "public": "packages/app/public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "apiProd"
+        }
+      ]
+    },
+    {
+      "target": "api-dev",
+      "public": "packages/app/public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "apiDev"
+        }
+      ]
     }
-  ]
+  ],
+  "functions": {
+    "predeploy": "yarn --cwd \"$RESOURCE_DIR\" build",
+    "source": "packages/functions"
+  }
 }

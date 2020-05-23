@@ -23,6 +23,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import { AxiosError } from 'axios';
 import PostCard from '@/components/molecules/PostCard.vue';
 import BasicButton from '@/components/atoms/BasicButton.vue';
 import { Post } from '@/pages/posts/_id.vue';
@@ -45,20 +46,14 @@ export default Vue.extend({
       .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
       .join('&');
 
-    const url = `https://${process.env.MICRO_CMS_SERVICE_ID}.microcms.io/api/v1/posts?${qs}`;
+    const url = `https://api.amon.house/v1/posts?${qs}`;
 
-    const response = await $axios
-      .get<{ contents: PickedPost[] }>(url, {
-        headers: {
-          'X-API-KEY': process.env.MICRO_CMS_API_KEY,
-        },
-      })
-      .catch((error) => {
-        if (error.response) {
-          return { data: null, status: error.response.status };
-        }
-        return { data: null, status: 500 };
-      });
+    const response = await $axios.get<{ contents: PickedPost[] }>(url).catch((error: AxiosError) => {
+      if (error.response) {
+        return { data: null, status: error.response.status };
+      }
+      return { data: null, status: 500 };
+    });
 
     if (response.data === null) {
       error({ statusCode: response.status, message: '' });
