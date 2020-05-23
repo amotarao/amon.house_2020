@@ -7,10 +7,15 @@ const baseUrl = `https://${serviceid}.microcms.io/api`;
 
 export const apiHandler: Parameters<typeof functions.https.onRequest>[0] = (req, resp) => {
   (async () => {
+    resp.setHeader('Access-Control-Allow-Origin', '*');
+    resp.setHeader('Access-Control-Allow-Methods', ' GET, OPTIONS');
+    resp.setHeader('Access-Control-Allow-Headers', '*');
+
     const response = await axios
       .get(`${baseUrl}${req.originalUrl}`, {
         headers: {
           'X-API-KEY': apikey,
+          'User-Agent': 'amon-house',
         },
       })
       .catch((error: AxiosError) => {
