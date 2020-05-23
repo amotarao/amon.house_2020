@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import Sass from 'sass';
 import Fiber from 'fibers';
 import { config } from 'dotenv';
@@ -96,7 +96,7 @@ export default {
 
       const url = `https://api.amon.house/v1/posts?${qs}`;
 
-      const response = await axios.get(url).catch((error: AxiosError) => {
+      const response = await axios.get(url).catch((error) => {
         if (error.response) {
           return { data: null, status: error.response.status };
         }
