@@ -40,12 +40,12 @@ export default Vue.extend({
   background: $bg2;
   border-radius: 4px;
   color: $text;
-  position: sticky;
+  position: fixed;
   top: 16px;
-  margin-left: 16px;
-  margin-bottom: -48px;
+  left: 16px;
   height: 48px;
   width: 48px;
+  z-index: 999;
 
   svg {
     fill: currentColor;
