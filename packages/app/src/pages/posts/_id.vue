@@ -42,20 +42,14 @@ export default Vue.extend({
       .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
       .join('&');
 
-    const url = `https://${process.env.MICRO_CMS_SERVICE_ID}.microcms.io/api/v1/posts/${params.id}?${qs}`;
+    const url = `https://api.amon.house/v1/posts/${params.id}?${qs}`;
 
-    const response = await $axios
-      .get<Post>(url, {
-        headers: {
-          'X-API-KEY': process.env.MICRO_CMS_API_KEY,
-        },
-      })
-      .catch((error: AxiosError) => {
-        if (error.response) {
-          return { data: null, status: error.response.status };
-        }
-        return { data: null, status: 500 };
-      });
+    const response = await $axios.get<Post>(url).catch((error: AxiosError) => {
+      if (error.response) {
+        return { data: null, status: error.response.status };
+      }
+      return { data: null, status: 500 };
+    });
 
     if (response.data === null) {
       error({ statusCode: response.status, message: '' });

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import Sass from 'sass';
 import Fiber from 'fibers';
 import { config } from 'dotenv';
@@ -94,20 +94,14 @@ export default {
         .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
         .join('&');
 
-      const url = `https://${process.env.MICRO_CMS_SERVICE_ID}.microcms.io/api/v1/posts?${qs}`;
+      const url = `https://api.amon.house/v1/posts?${qs}`;
 
-      const response = await axios
-        .get(url, {
-          headers: {
-            'X-API-KEY': process.env.MICRO_CMS_API_KEY,
-          },
-        })
-        .catch((error) => {
-          if (error.response) {
-            return { data: null, status: error.response.status };
-          }
-          return { data: null, status: 500 };
-        });
+      const response = await axios.get(url).catch((error: AxiosError) => {
+        if (error.response) {
+          return { data: null, status: error.response.status };
+        }
+        return { data: null, status: 500 };
+      });
 
       if (response.data === null) {
         return [];
@@ -121,8 +115,6 @@ export default {
   },
   env: {
     GA_ID: process.env.GA_ID,
-    MICRO_CMS_SERVICE_ID: process.env.MICRO_CMS_SERVICE_ID,
-    MICRO_CMS_API_KEY: process.env.MICRO_CMS_API_KEY,
   },
   build: {
     loaders: {
