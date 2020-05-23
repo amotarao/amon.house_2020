@@ -62,16 +62,16 @@ export default Vue.extend({
 <style lang="scss" module>
 .button {
   @include button-base;
+
   border: 2px solid;
   border-radius: 4px;
   display: inline-block;
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   font-size: 1.25rem;
   font-weight: bold;
   padding: 0.5em 2em;
   text-decoration: none;
   transition: all 0.3s ease-out;
-
   background-origin: border-box;
   background-size: calc(200% + 5em) 100%;
   background-position: 0 0;
@@ -88,6 +88,10 @@ export default Vue.extend({
     &:hover {
       color: $main;
     }
+  }
+
+  &[data-type~='sub'] {
+    @include with-color($bg2, $text);
   }
 
   &[data-type~='twitter'] {

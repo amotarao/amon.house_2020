@@ -159,6 +159,7 @@ export default Vue.extend({
 
 .share {
   @include button-base;
+
   display: flex;
   align-items: center;
   justify-content: center;
