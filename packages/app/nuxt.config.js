@@ -19,6 +19,7 @@ const head = {
     { hid: 'og:type', property: 'og:type', content: 'website' },
     { hid: 'og:title', property: 'og:title', content: 'あもんはうす' },
     { hid: 'og:description', property: 'og:description', content: 'さわむらあもんの記録' },
+    { hid: 'og:url', property: 'og:url', content: 'https://amon.house' },
     { hid: 'og:site_name', property: 'og:site_name', content: 'あもんはうす' },
     {
       hid: 'og:image',
@@ -56,9 +57,15 @@ export default {
   pageTransition: {
     name: 'page',
     mode: 'out-in',
+    beforeEnter() {
+      document.querySelector('#__layout').style.overflow = 'hidden';
+    },
+    afterEnter() {
+      document.querySelector('#__layout').style = null;
+    },
   },
-  plugins: [],
-  buildModules: ['@nuxt/typescript-build', '@nuxtjs/style-resources', '@nuxtjs/pwa'],
+  plugins: [{ src: '~/plugins/ga.ts', mode: 'client' }],
+  buildModules: ['@nuxt/typescript-build', '@nuxtjs/stylelint-module', '@nuxtjs/style-resources', '@nuxtjs/pwa'],
   modules: ['@nuxtjs/axios', '@nuxtjs/sitemap'],
   styleResources: {
     scss: ['./src/assets/scss/_variables.scss', './src/assets/scss/_mixins.scss'],
@@ -113,6 +120,7 @@ export default {
     },
   },
   env: {
+    GA_ID: process.env.GA_ID,
     MICRO_CMS_SERVICE_ID: process.env.MICRO_CMS_SERVICE_ID,
     MICRO_CMS_API_KEY: process.env.MICRO_CMS_API_KEY,
   },

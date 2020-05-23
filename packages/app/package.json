@@ -12,7 +12,8 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
   },
   "lint-staged": {
-    "*.{js,vue}": "eslint --fix"
+    "*.{js,vue}": "eslint --fix",
+    "*.{css,scss,vue}": "stylelint --fix"
   },
   "husky": {
     "hooks": {
@@ -31,6 +32,7 @@
     "@nuxtjs/eslint-module": "^2.0.0",
     "@nuxtjs/pwa": "^3.0.0-0",
     "@nuxtjs/style-resources": "^1.0.0",
+    "@nuxtjs/stylelint-module": "^4.0.0",
     "babel-eslint": "^10.0.1",
     "dotenv": "^8.2.0",
     "eslint": "^7.0.0",
@@ -42,6 +44,9 @@
     "lint-staged": "^10.0.0",
     "prettier": "^2.0.5",
     "sass": "^1.26.3",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^8.0.2",
+    "stylelint": "^13.5.0",
+    "stylelint-config-standard-scss": "^1.1.0",
+    "stylelint-scss": "^3.17.2"
   }
 }

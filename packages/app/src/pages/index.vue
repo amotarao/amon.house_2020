@@ -98,7 +98,7 @@ export default Vue.extend({
 
 <style lang="scss" module>
 .container {
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   margin: 0 auto;
   padding: 2rem 1rem;
   min-height: 100%;
@@ -142,7 +142,7 @@ export default Vue.extend({
   flex-wrap: wrap;
   justify-content: center;
   list-style: none;
-  margin: 0rem -0.5rem;
+  margin: 0 -0.5rem;
 }
 
 .snsItem,

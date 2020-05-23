@@ -1,16 +1,20 @@
 <template>
   <div :class="$style.container">
     <h1 :class="$style.code">{{ error.statusCode || 500 }}</h1>
-    <nuxt-link :class="$style.link" to="/">ホーム</nuxt-link>
+    <basic-button to="/" data-type="sub" data-size="small">ホーム</basic-button>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import { NuxtError } from '@nuxt/types';
+import BasicButton from '@/components/atoms/BasicButton.vue';
 
 export default Vue.extend({
   layout: 'default',
+  components: {
+    BasicButton,
+  },
   props: {
     error: {
       type: Object as () => NuxtError,
@@ -38,37 +42,6 @@ export default Vue.extend({
 
 .code {
   font-size: 8rem;
-  font-family: 'Roboto';
-}
-
-.link {
-  border: 2px solid;
-  border-radius: 4px;
-  display: inline-block;
-  font-family: 'Roboto';
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 0.5em 2em;
-  text-decoration: none;
-  transition: all 0.3s ease-out;
-
-  background-origin: border-box;
-  background-size: calc(200% + 5em) 100%;
-  background-position: 0 0;
-
-  &:hover {
-    background-position: 100% 100%;
-  }
-
-  $base-color: #252525;
-  $sub-color: #fff;
-
-  border-color: $base-color;
-  background-image: linear-gradient(150deg, $base-color 50%, $sub-color 50%);
-  color: $sub-color;
-
-  &:hover {
-    color: $base-color;
-  }
+  font-family: 'Roboto', sans-serif;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <post-page v-bind="postData" />
+  <post-page v-bind="postData" :url="canonicalUrl" />
 </template>
 
 <script lang="ts">
@@ -20,6 +20,7 @@ export type Post = {
 };
 
 type PostData = {
+  id: string;
   title: string;
   introduction: string;
   body: string;
@@ -68,6 +69,7 @@ export default Vue.extend({
       const post = (this as any).post as Post;
 
       return {
+        id: post.id,
         title: post.title,
         introduction: post.introduction,
         body: post.body,
@@ -76,9 +78,13 @@ export default Vue.extend({
         updatedAt: new Date(post.updatedAt),
       };
     },
+    canonicalUrl(): string {
+      return `https://amon.house/posts/${this.$route.params.id}`;
+    },
   },
   head() {
     const postData = (this as any).postData as PostData;
+    const canonicalUrl = (this as any).canonicalUrl as string;
     const encodedTitle = encodeURIComponent(postData.title);
     const thumbnail = postData.thumbnail
       ? `${postData.thumbnail}?w=1200&h=630&fit=crop`
@@ -86,8 +92,10 @@ export default Vue.extend({
 
     return {
       title: postData.title,
+      link: [{ hid: 'canonical', rel: 'canonical', href: canonicalUrl }],
       meta: [
         { hid: 'og:type', property: 'og:type', content: 'article' },
+        { hid: 'og:url', property: 'og:url', content: canonicalUrl },
         { hid: 'og:title', property: 'og:title', content: postData.title },
         { hid: 'og:description', property: 'og:description', content: postData.introduction },
         { hid: 'og:image', property: 'og:image', content: thumbnail },
