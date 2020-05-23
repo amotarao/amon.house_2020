@@ -65,7 +65,7 @@ export default {
     },
   },
   plugins: [{ src: '~/plugins/ga.ts', mode: 'client' }],
-  buildModules: ['@nuxt/typescript-build', '@nuxtjs/style-resources', '@nuxtjs/pwa'],
+  buildModules: ['@nuxt/typescript-build', '@nuxtjs/stylelint-module', '@nuxtjs/style-resources', '@nuxtjs/pwa'],
   modules: ['@nuxtjs/axios', '@nuxtjs/sitemap'],
   styleResources: {
     scss: ['./src/assets/scss/_variables.scss', './src/assets/scss/_mixins.scss'],
