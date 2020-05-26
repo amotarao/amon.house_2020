@@ -52,6 +52,7 @@ export default {
   mode: 'universal',
   srcDir: 'src',
   head,
+  modern: 'client',
   css: ['~/assets/scss/global.scss'],
   loading: { color: 'var(--text-color)' },
   pageTransition: {
