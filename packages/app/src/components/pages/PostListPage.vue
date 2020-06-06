@@ -1,5 +1,6 @@
 <template>
   <div :class="$style.wrapper">
+    <h1 :class="$style.title">記事一覧</h1>
     <ul :class="$style.postList">
       <li v-for="(item, i) in posts" :key="i" :class="$style.postItem">
         <post-card v-bind="item" />
@@ -31,6 +32,7 @@ export default Vue.extend({
   margin: auto;
   padding: 120px 16px;
   max-width: 100%;
+  width: 752px;
 }
 
 .title {

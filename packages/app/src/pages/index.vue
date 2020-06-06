@@ -2,11 +2,14 @@
   <div :class="$style.container">
     <div :class="$style.inner">
       <h1 :class="$style.title">あもんはうす</h1>
-      <ul :class="$style.postList">
-        <li v-for="(item, i) in posts" :key="i" :class="$style.postItem">
-          <post-card v-bind="item" />
-        </li>
-      </ul>
+      <section :class="$style.postSection">
+        <ul :class="$style.postList">
+          <li v-for="(item, i) in posts" :key="i" :class="$style.postItem">
+            <post-card v-bind="item" />
+          </li>
+        </ul>
+        <basic-button to="/posts" data-type="site" data-size="small">記事一覧</basic-button>
+      </section>
       <ul :class="$style.snsList">
         <li v-for="(item, i) in snsItems" :key="i" :class="$style.snsItem">
           <basic-button :href="item.url" :data-type="item.type">{{ item.name }}</basic-button>
@@ -123,6 +126,10 @@ export default Vue.extend({
 
 .title {
   margin-bottom: 2rem;
+}
+
+.postSection {
+  margin: 0 auto 2rem;
 }
 
 .postList {
