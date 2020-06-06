@@ -37,6 +37,13 @@ const head = {
     { rel: 'apple-touch-icon', type: 'image/png', href: '/apple-touch-icon.png' },
     { rel: 'icon', type: 'image/png', href: '/icon-192.png' },
     { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap' },
+    {
+      hid: 'posts-rss',
+      rel: 'alternate',
+      type: 'application/rss+xml',
+      title: 'あもんはうすの記事',
+      href: '/posts.xml',
+    },
   ],
 };
 
@@ -67,7 +74,7 @@ export default {
   },
   plugins: [{ src: '~/plugins/ga.ts', mode: 'client' }],
   buildModules: ['@nuxt/typescript-build', '@nuxtjs/stylelint-module', '@nuxtjs/style-resources', '@nuxtjs/pwa'],
-  modules: ['@nuxtjs/axios', '@nuxtjs/sitemap'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/sitemap', '@nuxtjs/feed'],
   styleResources: {
     scss: ['./src/assets/scss/_variables.scss', './src/assets/scss/_mixins.scss'],
   },
@@ -116,6 +123,53 @@ export default {
       }));
     },
   },
+  feed: [
+    {
+      path: '/posts.xml',
+      async create(feed) {
+        feed.options = {
+          title: 'あもんはうすの記事',
+          link: 'https://amon.house/posts.xml',
+          description: 'あもんはうすの記事',
+        };
+
+        const q = {
+          limit: 1000,
+          fields: ['id', 'title', 'introduction', 'body', 'createdAt'].join(','),
+        };
+        const qs = Object.entries(q)
+          .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
+          .join('&');
+
+        const url = `https://api.amon.house/v1/posts?${qs}`;
+
+        const response = await axios.get(url).catch((error) => {
+          if (error.response) {
+            return { data: null, status: error.response.status };
+          }
+          return { data: null, status: 500 };
+        });
+
+        if (response.data === null) {
+          return [];
+        }
+
+        response.data.contents.forEach((post) => {
+          feed.addItem({
+            title: post.title,
+            link: `https://amon.house/posts/${post.id}`,
+            description: post.introduction,
+            content: post.body.replace(/<.+?>/g, ''),
+            pubDate: post.createdAt,
+          });
+        });
+
+        feed.addCategory('Blog');
+      },
+      cacheTime: 1000 * 60 * 10,
+      type: 'rss2',
+    },
+  ],
   env: {
     GA_ID: process.env.GA_ID,
   },
