@@ -120,13 +120,13 @@ export default Vue.extend({
   list-style: none;
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));
   grid-gap: 1rem;
 }
 
 .postItem {
   margin: auto;
-  max-width: 320px;
+  height: 100%;
   width: 100%;
 }
 

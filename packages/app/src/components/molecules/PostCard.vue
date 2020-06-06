@@ -58,6 +58,7 @@ export default Vue.extend({
   display: block;
   overflow: hidden;
   text-decoration: none;
+  height: 100%;
   width: 100%;
   transition: all 0.2s ease-out;
 
