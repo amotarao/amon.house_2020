@@ -82,6 +82,8 @@ export default {
       short_name: 'あもんはうす',
       description: 'さわむらあもんの記録',
       lang: 'ja',
+      start_url: '/?ref=pwa',
+      theme_color: '#252525',
     },
   },
   sitemap: {
