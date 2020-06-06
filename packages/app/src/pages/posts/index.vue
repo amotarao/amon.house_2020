@@ -41,5 +41,18 @@ export default Vue.extend({
 
     return { posts: response.data.contents };
   },
+  computed: {
+    canonicalUrl(): string {
+      return `https://amon.house/posts`;
+    },
+  },
+  head() {
+    const canonicalUrl = (this as any).canonicalUrl as string;
+
+    return {
+      title: '記事一覧',
+      link: [{ hid: 'canonical', rel: 'canonical', href: canonicalUrl }],
+    };
+  },
 });
 </script>

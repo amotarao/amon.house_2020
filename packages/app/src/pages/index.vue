@@ -88,6 +88,18 @@ export default Vue.extend({
       ],
     };
   },
+  computed: {
+    canonicalUrl(): string {
+      return `https://amon.house/`;
+    },
+  },
+  head() {
+    const canonicalUrl = (this as any).canonicalUrl as string;
+
+    return {
+      link: [{ hid: 'canonical', rel: 'canonical', href: canonicalUrl }],
+    };
+  },
 });
 </script>
 
