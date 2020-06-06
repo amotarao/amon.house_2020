@@ -104,21 +104,3 @@ export default Vue.extend({
   },
 });
 </script>
-
-<style lang="scss" module>
-.wrapper {
-  margin: auto;
-  padding: 120px 16px;
-  max-width: 100%;
-  width: 640px;
-}
-
-.contents {
-  font-size: 16px;
-  line-height: 1.7;
-
-  > * + * {
-    margin-top: 24px;
-  }
-}
-</style>
