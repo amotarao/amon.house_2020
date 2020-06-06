@@ -146,6 +146,23 @@ export default Vue.extend({
     margin-top: 24px;
   }
 
+  a {
+    color: inherit;
+
+    &[target='_blank']::after {
+      background: var(--text-color);
+      mask-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z'/%3E%3C/svg%3E");
+      mask-size: contain;
+      mask-position: center;
+      content: '';
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      margin-left: 0.1em;
+      transform: translateY(0.125em);
+    }
+  }
+
   img {
     max-width: 100%;
     height: auto;
