@@ -6,7 +6,7 @@ COPY . .
 ARG GA_ID
 ENV GA_ID $GA_ID
 
-RUN yarn
+RUN yarn install --silent
 RUN yarn build
 
 CMD [ "yarn", "start" ]
