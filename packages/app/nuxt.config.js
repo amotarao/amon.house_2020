@@ -57,6 +57,7 @@ if (process.env.NOINDEX === 'true') {
 
 export default {
   mode: 'universal',
+  target: 'static',
   srcDir: 'src',
   head,
   modern: 'client',
@@ -72,6 +73,7 @@ export default {
       document.querySelector('#__layout').style = null;
     },
   },
+  components: false,
   plugins: [{ src: '~/plugins/ga.ts', mode: 'client' }],
   buildModules: ['@nuxt/typescript-build', '@nuxtjs/stylelint-module', '@nuxtjs/style-resources', '@nuxtjs/pwa'],
   modules: ['@nuxtjs/axios', '@nuxtjs/sitemap', '@nuxtjs/feed'],
