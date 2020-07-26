@@ -34,10 +34,6 @@ jobs:
       run: rm .gitignore
       working-directory: ./packages/app
 
-    - name: Copy .gitignore
-      run: cp .gitignore.workflow .gitignore
-      working-directory: ./packages/app
-
     - name: Publish
       uses: peaceiris/actions-gh-pages@v3
       with:
