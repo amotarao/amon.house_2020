@@ -30,6 +30,10 @@ jobs:
       env:
         GA_ID: ${{ secrets.GA_ID }}
 
+    - name: Remove .gitignore
+      run: rm .gitignore
+      working-directory: ./packages/app
+
     - name: Publish
       uses: peaceiris/actions-gh-pages@v3
       with:
