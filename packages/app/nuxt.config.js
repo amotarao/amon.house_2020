@@ -190,6 +190,34 @@ export default {
       },
     },
   },
+  generate: {
+    crawler: false,
+    fallback: true,
+    async routes() {
+      const q = {
+        limit: 1000,
+        fields: ['id'].join(','),
+      };
+      const qs = Object.entries(q)
+        .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
+        .join('&');
+
+      const url = `https://api.amon.house/v1/posts?${qs}`;
+
+      const response = await axios.get(url).catch((error) => {
+        if (error.response) {
+          return { data: null, status: error.response.status };
+        }
+        return { data: null, status: 500 };
+      });
+
+      if (response.data === null) {
+        return [];
+      }
+
+      return response.data.contents.map((post) => `/posts/${post.id}`);
+    },
+  },
   server: {
     port: process.env.PORT || 3000,
     host: '0.0.0.0',
