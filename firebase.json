@@ -1,0 +1,114 @@
+{
+  "hosting": [
+    {
+      "target": "production",
+      "public": "packages/app/public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "headers": [
+        {
+          "source": "**/*.@(js|json|jpeg|jpg|png|gif|css)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=604800, s-maxage=604800"
+            }
+          ]
+        },
+        {
+          "source": "**/sw.js",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=0"
+            }
+          ]
+        }
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "run": {
+            "serviceId": "amon-house",
+            "region": "asia-northeast1"
+          }
+        }
+      ]
+    },
+    {
+      "target": "development",
+      "public": "packages/app/public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "headers": [
+        {
+          "source": "**/*.@(js|json|jpeg|jpg|png|gif|css)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=604800, s-maxage=604800"
+            }
+          ]
+        },
+        {
+          "source": "**/sw.js",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=0"
+            }
+          ]
+        }
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "run": {
+            "serviceId": "amon-house-dev",
+            "region": "asia-northeast1"
+          }
+        }
+      ]
+    },
+    {
+      "target": "api-prod",
+      "public": "packages/app/public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "apiProd"
+        }
+      ]
+    },
+    {
+      "target": "api-dev",
+      "public": "packages/app/public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "apiDev"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "predeploy": "yarn --cwd \"$RESOURCE_DIR\" build",
+    "source": "packages/functions"
+  }
+}
