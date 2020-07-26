@@ -1,0 +1,25 @@
+[
+  {
+    "name": "posts",
+    "path": "/posts",
+    "component": "/home/runner/work/amon.house/amon.house/packages/app/src/pages/posts/index.vue",
+    "chunkName": "pages/posts/index",
+    "url": "/posts",
+    "_name": "_208b94c4"
+  },
+  {
+    "name": "posts-id",
+    "path": "/posts/:id",
+    "component": "/home/runner/work/amon.house/amon.house/packages/app/src/pages/posts/_id.vue",
+    "chunkName": "pages/posts/_id",
+    "_name": "_28f50786"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/home/runner/work/amon.house/amon.house/packages/app/src/pages/index.vue",
+    "chunkName": "pages/index",
+    "url": "/",
+    "_name": "_32ac164c"
+  }
+]

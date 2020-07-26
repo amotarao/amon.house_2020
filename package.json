@@ -1,0 +1,54 @@
+{
+  "name": "amon.house",
+  "author": "Amon Sawamura",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "nuxt-ts",
+    "build": "nuxt-ts build",
+    "build:noindex": "NOINDEX=true yarn build",
+    "export": "nuxt-ts export",
+    "export:noindex": "NOINDEX=true yarn export",
+    "start": "nuxt-ts start",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
+  },
+  "lint-staged": {
+    "*.{js,vue}": "eslint --fix",
+    "*.{css,scss,vue}": "stylelint --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "@nuxt/typescript-runtime": "^0.4.7",
+    "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/feed": "^2.0.0",
+    "@nuxtjs/sitemap": "^2.3.0",
+    "nuxt": "^2.13.0"
+  },
+  "devDependencies": {
+    "@nuxt/typescript-build": "^2.0.0",
+    "@nuxtjs/eslint-config-typescript": "^2.0.0",
+    "@nuxtjs/eslint-module": "^2.0.0",
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "@nuxtjs/style-resources": "^1.0.0",
+    "@nuxtjs/stylelint-module": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.0.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-nuxt": ">=1.0.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "fibers": "^4.0.2",
+    "husky": "^4.0.0",
+    "lint-staged": "^10.0.0",
+    "prettier": "^2.0.5",
+    "sass": "^1.26.3",
+    "sass-loader": "^8.0.2",
+    "stylelint": "^13.5.0",
+    "stylelint-config-standard-scss": "^1.1.0",
+    "stylelint-scss": "^3.17.2",
+    "ts-loader": "^8.0.1"
+  }
+}

@@ -1,0 +1,11 @@
+<!doctype html>
+<html {{ html_attrs }}>
+  <head {{ head_attrs }}>
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ ENV.GA_ID }}"></script>
+    <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("create","{{ ENV.GA_ID }}")</script>
+    {{ HEAD }}
+  </head>
+  <body {{ body_attrs }}>
+    {{ APP }}
+  </body>
+</html>
